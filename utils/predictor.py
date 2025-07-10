@@ -42,7 +42,7 @@ def classify_prediction(prediction_data, output_tiff, reference_tiff, thresholds
 
 def show_images(input_imgs, predicted_imgs, classified_imgs):
     num = len(input_imgs)
-    fig, axs = plt.subplots(num, 3, figsize=(18, 6 * num))
+    fig, axs = plt.subplots(num, 3, figsize=(8, 6 * num))
 
     if num == 1:
         axs = np.expand_dims(axs, 0)
