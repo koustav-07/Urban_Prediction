@@ -20,7 +20,7 @@ def load_model():
     model_path = "model/model.h5"
     if not os.path.exists(model_path):
         os.makedirs("model", exist_ok=True)
-        url = "https://drive.google.com/uc?id=1vkeZmAIzop8K5MdsIK8o70xpEHN7YVH6"
+        url = "https://drive.google.com/drive/folders/1IMKzNSKffZwo6hvvQsqT4KIaTn9bbxmJ"
         gdown.download(url, model_path, quiet=False)
     return tf.keras.models.load_model(model_path)
 
