@@ -40,24 +40,16 @@ def classify_prediction(prediction_data, output_tiff, reference_tiff, thresholds
 
     return classified
 
-def show_images(input_imgs, predicted_imgs, classified_imgs):
-    num = len(input_imgs)
-    fig, axs = plt.subplots(num, 3, figsize=(5, 1 * num))
+def show_predictions(predicted_imgs):
+    num = len(predicted_imgs)
+    fig, axs = plt.subplots(num, 1, figsize=(8, 3 * num))  # single column layout
 
     if num == 1:
-        axs = np.expand_dims(axs, 0)
+        axs = [axs]  # make it iterable if only one image
 
     for i in range(num):
-        axs[i, 0].imshow(input_imgs[i], cmap='gray')
-        axs[i, 0].set_title(f'Input {i+1}')
-        axs[i, 0].axis('off')
-
-        axs[i, 1].imshow(predicted_imgs[i], cmap='viridis')
-        axs[i, 1].set_title(f'Predicted {i+1}')
-        axs[i, 1].axis('off')
-
-        axs[i, 2].imshow(classified_imgs[i], cmap='tab10')
-        axs[i, 2].set_title(f'Classified {i+1}')
-        axs[i, 2].axis('off')
+        axs[i].imshow(predicted_imgs[i], cmap='viridis')
+        axs[i].set_title(f'Predicted {i+1}')
+        axs[i].axis('off')
 
     st.pyplot(fig)
