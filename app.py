@@ -51,6 +51,12 @@ if uploaded_files and len(uploaded_files) >= 2 and target_year:
         st.subheader(f"🗓️ Predicted Built-up/Non Built-up Areas for {target_year}")
         st.image(binary_predicted * 255, caption="White = Built-up (1), Black = Non Built-up (0)", use_container_width=True)
 
+        fig, ax = plt.subplots(figsize=(8, 8))  # Adjust figure size here
+        ax.imshow(binary_predicted, cmap='gray')
+        ax.set_title(f'Predicted Built-up Map ({target_year})')
+        ax.axis('off')
+        st.pyplot(fig)
+        
         with open(output_tmp_path, "rb") as f:
             st.download_button(
                 label="📥 Download Predicted TIFF",
